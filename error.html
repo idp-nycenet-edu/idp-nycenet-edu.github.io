@@ -1,3 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign In - New York City Department of Education</title>
+    <meta name="description" content="Sign in page used by multiple NYC Department of Education websites for logging in.">
+    
+   <link rel="stylesheet" href="https://www.nycenet.edu/ui/apps/sites/sso/waves/css/sso.css" type="text/css"> 
+	
+<!--	<link rel="stylesheet" href="https://www.nycenet.edu/ui/apps/sites/SelfService/css/signin.css"> -->
+
+	
+<script>
+function rmemail(str){
+var ret = str.replace('@nycstudents.net','');
+ret=ret.replace('@schools.nyc.gov','');
+ret=ret.replace('@bers.nyc.gov','');
+document.Login.username.value=ret;
+}
+
+var httpRequest;
+function checkLoginRequiredWithIDPCloud(){
+ 
+    httpRequest = new XMLHttpRequest();
+    httpRequest.withCredentials = true
+      
     if (!httpRequest) {
       alert('Not supported');
       return false;
