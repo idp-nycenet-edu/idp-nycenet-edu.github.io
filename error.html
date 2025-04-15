@@ -1,4 +1,49 @@
-        // If no error is displayed take user to the "vUsername" field. If there is an error take user to the "Password" field.
+                                <div class="d-flex flex-column gap-1">
+                                    <button class="btn btn-success w-100 rounded-pill" id="login-button" value="login" type="submit" tabindex="3">Sign in</button>
+                                </div>
+                            </div>  
+						         
+								 <div class="bottom-links text-center small pt-5 px-4 px-xxl-6" id="passwordLinks">								 
+									<div class="d-flex flex-column gap-1">
+										<a class="btn btn-link btn-sm" href="error.html">Password and Profile Management</a>
+										</div>
+									</div>	
+							
+                       					
+						</form>
+					 </div>
+					
+	   </div>
+	      </div>
+		     </div>
+			 
+	</main>
+    <script>
+
+
+function setFedSettings(){
+		var origValue=document.getElementById("vusername").value;	
+	var newValue=origValue.toLowerCase().replace('@nycstudents.net','').replace('@bers.nyc.gov','').replace('@schools.nyc.gov','');
+		document.getElementById("username").value=newValue;	
+		}
+	
+		function getUrlParameter(name) {			
+			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			var results = regex.exec(location.search);
+			return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		}
+		
+		var ouserName = getUrlParameter('username');
+		
+		if (ouserName!=null) {
+			document.getElementById("vusername").value=ouserName;						
+		}
+		
+		var errorMessageContainer = document.getElementById('cs-error-message-container');
+        var errorMessage = document.getElementById('cs-error-message');
+
+	    // If no error is displayed take user to the "vUsername" field. If there is an error take user to the "Password" field.
 		
 		 if(!errorMessageContainer && !errorMessage && errorMessage.innerText.trim() === ''){
 		  document.getElementById("vusername").focus();
