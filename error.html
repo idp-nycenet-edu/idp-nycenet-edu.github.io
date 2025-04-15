@@ -1,5 +1,45 @@
-<head>
-</head>
-<body>
-  <h1>Please enter your login information.</h1>
+        // If no error is displayed take user to the "vUsername" field. If there is an error take user to the "Password" field.
+		
+		 if(!errorMessageContainer && !errorMessage && errorMessage.innerText.trim() === ''){
+		  document.getElementById("vusername").focus();
+		 } else if (ouserName!=null) {
+			document.getElementById("password-input").focus();
+        } else {
+            document.getElementById("vusername").focus();
+        }
+        // Makes password visible. This is specially important for Mobile Phones where it's hard to know if you typed right password.
+        function passtext() {
+            var x = document.getElementById("password-input");
+            if (x.type === "password") { x.type = "text";} else { x.type = "password"; }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+    $(function () {
+        //$('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $("#login-button").on("click", function(ele) {
+        var user = $("#vusername");
+        var pass =  $("#password-input");
+        if (user.val() == "") {
+            user.tooltip('show');
+            user.focus();
+            ele.preventDefault();
+        } else if (pass.val() == "") {
+            pass.tooltip('show');
+            pass.focus();
+            ele.preventDefault();
+        }
+    })
+    $("#cloud-directory-form .form-control").on("click keyup", function(ele) {
+        $(this).tooltip('hide');
+        $(this).tooltip('dispose');
+        console.log("this");
+    })
+    </script>
+
 </body>
+</html>
