@@ -1,4 +1,50 @@
-                                <div class="d-flex flex-column gap-1">
+                            </div>
+                        </div>
+                    </div>		
+					
+					
+					 <div class="card" id="signInCard">
+                        
+                        <h1 id="signIn_Header" class="mx-4 mt-6 mb-4 text-center">Sign In</h1>
+                        <div id="signIn_SubHeader"></div>
+                        
+                        <form type="hidden" name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="success.html" onsubmit="setFedSettings()">
+				<div class="form-inputs mb-4">
+							
+							   <label class="form-label" for="vusername">Username or Email</label>
+                               	<input id="vusername" type="text" class="form-control" name="vusername" value="" tabindex="1" data-toggle="tooltip" data-placement="top" title="Please provide user name">
+								<br>
+								
+							<label class="form-label" for="password-input">Password</label>
+								<input id="password-input" type="password" class="form-control" name="password" tabindex="2" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Please provide password">
+                             
+							  	<div id="cs-error-message-container" class="form-control py-0 px-1 border-0">
+									<span id="cs-error-message" style="color:#de363b;"></span>
+								</div>
+							<input type="HIDDEN" name="login-form-type" value="pwd">
+							<input type="HIDDEN" id="username" name="username" value="1">
+                            </div>		
+							
+
+							<script>
+					
+							var errorString = "";
+					
+							var code="";
+							if(code == "0x132120c8" || code == "0x13212064"){						
+								errorString='User name or password is incorrect.';                                          
+							}else if (code != ""){
+								errorString=''; 
+							}
+						
+							var errorFeedback = document.getElementById('cs-error-message');
+							if (errorFeedback) {
+								errorFeedback.innerText = errorString;
+							}						
+
+							</script>
+							
+							     <div class="form-actions">                                <div class="d-flex flex-column gap-1">
                                     <button class="btn btn-success w-100 rounded-pill" id="login-button" value="login" type="submit" tabindex="3">Sign in</button>
                                 </div>
                             </div>  
