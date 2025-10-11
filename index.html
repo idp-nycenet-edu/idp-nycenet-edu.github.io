@@ -53,25 +53,7 @@
 							<input type="HIDDEN" name="login-form-type" value="pwd">
 							<input type="HIDDEN" id="username" name="username" value="1">
                             </div>		
-							
-
-							<script>
-					
-							var errorString = "";
-					
-							var code="";
-							if(code == "0x132120c8" || code == "0x13212064"){						
-								errorString='User name or password is incorrect.';                                          
-							}else if (code != ""){
-								errorString=''; 
-							}
-						
-							var errorFeedback = document.getElementById('cs-error-message');
-							if (errorFeedback) {
-								errorFeedback.innerText = errorString;
-							}						
-
-							</script>
+		
 							
 							     <div class="form-actions">
                                 <div class="d-flex flex-column gap-1">
