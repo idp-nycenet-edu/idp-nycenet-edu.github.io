@@ -9,40 +9,10 @@
 	
 <!--	<link rel="stylesheet" href="https://www.nycenet.edu/ui/apps/sites/SelfService/css/signin.css"> -->
 
-
-<script>
- 
-   
-
-    httpRequest.onreadystatechange = checkResponse;
-    httpRequest.open('GET', 'https://idpcloud.nycenet.edu/v1.0/endpoint/default/authorize?prompt=none&scope=openid&response_mode=form_post&response_type=none&client_id=14d8fd49-551b-422a-a90c-70a055139f5a&state=3b047687-7ab8-c2be-8019-bbb295d98871&redirect_uri=https%3A%2F%2Fidp.nycenet.edu%2Fpkmsoidc');
-    httpRequest.send();
-}
-
-function checkResponse() {
-   var responseText;
-    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-      if (httpRequest.status === 200) {
-        responseText=httpRequest.responseText;
-   
-        if(responseText.includes('login_required')){
-          console.log('LOGIN REQUIRED');
-        } else  {
-	  console.log('LOGIN NOT REQUIRED');
-          location.href = "https://idp.nycenet.edu/pkmsoidc?iss=default";
-       }
-     
-      } else {
-        console.log('Some issue with the request');
-      }
-    }
-  }
-</script>
-
 </head>
 
 
-<body class="body-bg-image px-1 py-3 px-sm-4 py-sm-6 h-100" onload="checkLoginRequiredWithIDPCloud()">
+<body class="body-bg-image px-1 py-3 px-sm-4 py-sm-6 h-100">
 <main class="container">
 <div class="row">
 	 <div class="col-sm-10 col-md-8 col-lg-12 col-xxl-10 offset-sm-1 offset-md-2 offset-lg-0 offset-xxl-1">
