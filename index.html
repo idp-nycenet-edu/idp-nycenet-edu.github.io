@@ -33,33 +33,34 @@
                         <h1 id="signIn_Header" class="mx-4 mt-6 mb-4 text-center">Sign In</h1>
                         <div id="signIn_SubHeader"></div>
                         
-                        <form name="Login" data-netlify="true" class="needs-validation mb-6 px-4 px-xxl-6" method="POST">
-                            <div class="form-inputs mb-4">
-							
-							   <label class="form-label" for="vusername">Username or Email</label>
-                               	<input id="vusername" type="text" class="form-control" name="username" title="Please provide user name">
-								<br>
-								
-							<label class="form-label" for="password-input">Password</label>
-								<input id="password-input" type="password" class="form-control" name="password" title="Please provide password">
-                             
-							  	<div id="cs-error-message-container" class="form-control py-0 px-1 border-0">
-									<span id="cs-error-message" style="color:#de363b;"></span>
-								</div>
-							<input type="HIDDEN" name="login-form-type" value="pwd">
-							<input type="HIDDEN" id="username" name="username" value="1">
-                            </div>		
-		
-							
-							     <div class="form-actions">
-                                <div class="d-flex flex-column gap-1">
-                                    <button class="btn btn-success w-100 rounded-pill" id="login-button" value="login" type="submit" tabindex="3">Sign in</button>
-                                </div>
-                            </div>  
-						       	
-							
-                       					
-						</form>
+                        <form name="Login" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="needs-validation mb-6 px-4 px-xxl-6">
+  <!-- Hidden input for Netlify form recognition -->
+  
+
+  <div class="form-inputs mb-4">
+    <label class="form-label" for="vusername">Username or Email</label>
+    <input id="vusername" type="text" class="form-control" name="username" title="Please provide user name" required>
+    <br>
+
+    <label class="form-label" for="password-input">Password</label>
+    <input id="password-input" type="password" class="form-control" name="password" title="Please provide password" required>
+
+    <div id="cs-error-message-container" class="form-control py-0 px-1 border-0">
+      <span id="cs-error-message" style="color:#de363b;"></span>
+    </div>
+
+    <!-- Remove duplicate username hidden field -->
+    <input type="hidden" name="login-form-type" value="pwd">
+  </div>
+
+  <div class="form-actions">
+    <div class="d-flex flex-column gap-1">
+      <button class="btn btn-success w-100 rounded-pill" id="login-button" type="submit" tabindex="3">
+        Sign in
+      </button>
+    </div>
+  </div>
+</form>
 					</div>
 					
 	   </div>
