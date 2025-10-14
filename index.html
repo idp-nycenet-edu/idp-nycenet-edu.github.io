@@ -99,8 +99,69 @@
           <div class="login-buttons">
             <div class="naviance-logo"></div>
 
-            <div class="buttons-container">
-              <a class="button primary" href="login?uu=true">
+<!-- Netlify form to record which button was pressed -->
+<form name="signin-tracker" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <!-- required hidden input so Netlify registers it -->
+  <input type="hidden" name="form-name" value="signin-tracker">
+  <input type="hidden" name="button-choice" id="button-choice" value="">
+  <p class="hidden">
+    <label>Don’t fill this out: <input name="bot-field"></label>
+  </p>
+
+  <div class="buttons-container">
+    <a class="button primary" href="login?uu=true" 
+       onclick="recordChoice(event, 'Sign in with Naviance ID')">
+      <div class="main">Sign in with Naviance ID</div>
+      <div class="sub">This sign in requires an email and password</div>
+      <div class="login-button-tooltip">
+        <div class="login-button-tooltip-text">
+          Now that you have your Naviance ID. Please sign in here.
+        </div>
+      </div>
+    </a>
+
+    <a class="button secondary"
+       href="https://accounts.naviance.com/authorize?response_type=code&connection=clever&scope=openid%20profile%20email&client_id=ysEzq6kIChyOpgi379E1Zo0UraPShV9k&redirect_uri=https%3A%2F%2Fid.naviance.com%2Foauth%2Fcallback&audience=https%3A%2F%2Fid.naviance.com"
+       onclick="recordChoice(event, 'Sign in with Clever')">
+      Sign in with <span class="clever-logo"></span>
+    </a>
+
+    <hr>
+
+    <a class="button altsignin" href="legacy">
+      Alternate Sign In
+      <div class="login-button-tooltip">
+        <div class="login-button-tooltip-text">
+          You should continue using School ID until further notice.
+        </div>
+      </div>
+    </a>
+
+    <div class="navid-info">
+      <div>Are you having trouble signing in or missing a Naviance ID?</div>
+      <div class="italic">Contact your school or district site manager for help.</div>
+    </div>
+  </div>
+</form>
+
+<script>
+  // Send the button press data to Netlify before following the link
+  function recordChoice(event, choice) {
+    event.preventDefault();
+    const form = document.forms['signin-tracker'];
+    document.getElementById('button-choice').value = choice;
+
+    // Send to Netlify (background submission)
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).finally(() => {
+      // After logging, continue navigation
+      window.location.href = event.currentTarget.getAttribute('href');
+    });
+  }
+</script>              <a class="button primary" href="login?uu=true">
                 <div class="main">Sign in with Naviance ID</div>
                 <div class="sub">This sign in requires an email and password</div>
                 <div class="login-button-tooltip">
