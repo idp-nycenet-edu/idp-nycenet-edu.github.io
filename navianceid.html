@@ -1546,6 +1546,9 @@ function getAuthConnections() {
   if (id_root_uri.length === 0) {
     id_root_uri = config.auth0Tenant === 'hobsons' ? 'https://id.naviance.com' : 'https://tf-id-qa.mango.naviance.com';
   }
+.auth0-lock {
+  padding-bottom: 20px; /* tweak until it matches original height */
+}	
   var connectionUrl = id_root_uri + '/allowed-connections';
 
   if (uuEnabled) {
