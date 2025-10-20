@@ -35,21 +35,20 @@
   <input type="hidden" name="button-choice" id="button-choice" value="">
 </form>
 
-<!-- use the FULL clever URL in data-href -->
-<a href="https://clever.com/oauth/saml/login?target=https://clever.com/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3B..."
-   class="AuthMethod--container"
+<a href="https://clever.com/oauth/saml/login?target=..." 
+   class="AuthMethod--container" 
    data-choice="NYCENET">
    Log in with NYCENET - Recommended for Students and Teachers
 </a>
 
-<a href="https://clever.com/oauth/sis/login?target=https://clever.com/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3B..."
-   class="AuthMethod--container"
+<a href="https://clever.com/oauth/sis/login?target=..." 
+   class="AuthMethod--container" 
    data-choice="SIS">
    Students, Teachers, and School Staff
 </a>
 
-<a href="https://clever.com/oauth/badges/login?target=https://clever.com/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3B..."
-   class="AuthMethod--container"
+<a href="https://clever.com/oauth/badges/login?target=..." 
+   class="AuthMethod--container" 
    data-choice="Badges">
    Log in with Clever Badges
 </a>
@@ -59,17 +58,19 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
     const choice = this.dataset.choice || 'unknown';
+    const redirectURL = this.getAttribute('href'); // ✅ use href safely
     document.getElementById('button-choice').value = choice;
 
-    // Submit the form to Netlify
+    // Submit form to Netlify
     const form = document.forms['cleversignin-tracker'];
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(form)).toString()
-    }).finally(() => {
-      // redirect to Clever (absolute)
-      window.location.href = this.dataset.href;
+    })
+    .finally(() => {
+      // ✅ redirect after Netlify logs click
+      window.location.href = redirectURL;
     });
   });
 });
