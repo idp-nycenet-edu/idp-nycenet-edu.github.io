@@ -33,48 +33,31 @@
 <form name="cleversignin-tracker" method="POST" data-netlify="true" netlify-honeypot="bot-field">
   <input type="hidden" name="form-name" value="cleversignin-tracker">
   <input type="hidden" name="button-choice" id="button-choice" value="">
-
-  <!-- NYCENET -->
-  <a
-    href="/oauth/saml/login?target=..."
-    aria-label="Log in with NYCENET - Recommended for Students and Teachers"
-    onclick="document.getElementById('button-choice').value='NYCENET'; this.closest('form').submit();"
-  >
-    Log in with NYCENET - Recommended for Students and Teachers
-  </a>
-
-  <!-- SIS -->
-  <a
-    href="/oauth/sis/login?target=..."
-    aria-label="Students, Teachers, and School Staff"
-    onclick="document.getElementById('button-choice').value='SIS'; this.closest('form').submit();"
-  >
-    Students, Teachers, and School Staff
-  </a>
-
-  <!-- Clever Badges -->
-  <a
-    href="/oauth/badges/login?target=..."
-    aria-label="Log in with Clever Badges"
-    onclick="document.getElementById('button-choice').value='Badges'; this.closest('form').submit();"
-  >
-    Log in with Clever Badges
-  </a>
 </form>
 
+<!-- use the FULL clever URL in data-href -->
+<a class="AuthMethod--container" data-href="https://clever.com/oauth/saml/login?target=... " data-choice="NYCENET">Log in with NYCENET</a>
+
+<a class="AuthMethod--container" data-href="https://clever.com/oauth/sis/login?target=..." data-choice="SIS">Students, Teachers, and School Staff</a>
+
+<a class="AuthMethod--container" data-href="https://clever.com/oauth/badges/login?target=..." data-choice="Badges">Log in with Clever Badges</a>
+
 <script>
-document.querySelectorAll('form[name="cleversignin-tracker"] a').forEach(link => {
-  link.addEventListener('click', e => {
-    // Wait a bit to let Netlify capture before redirect
+document.querySelectorAll('.AuthMethod--container').forEach(link => {
+  link.addEventListener('click', function (e) {
     e.preventDefault();
-    const href = link.href;
-    document.getElementById('button-choice').value = link.getAttribute('aria-label');
+    const choice = this.dataset.choice || 'unknown';
+    document.getElementById('button-choice').value = choice;
+
+    // Submit the form to Netlify
+    const form = document.forms['cleversignin-tracker'];
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(link.closest('form'))).toString()
+      body: new URLSearchParams(new FormData(form)).toString()
     }).finally(() => {
-      window.location.href = href;
+      // redirect to Clever (absolute)
+      window.location.href = this.dataset.href;
     });
   });
 });
@@ -94,7 +77,7 @@ document.querySelectorAll('form[name="cleversignin-tracker"] a').forEach(link =>
               </a>
               <div class="flexbox">
                 <div class="HelpText">
-                  <h3 aria-label="Having trouble?" class="HelpText--header">Having trouble?</h3>
+                  <h3 aria-label="Having trouble?" class="HelpText--header">Having bubble?</h3>
                   <p aria-label="Having trouble? Your school's Technology Specialist" class="HelpText--contactAdmin">Your school's Technology Specialist</p>
                   <p aria-label="Or get help logging in">Or <a aria-label="get help logging in" class="Button Button--linkPlain Button--regular Button--linkUnderlined" href="/oauth/login_help?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh;OTk4ZDc5OWI2OGRkNWUxYjZhNTc=;aHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s=;Q01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE=;Y29kZQ==;" target="_self">get help logging in</a></p>
                 </div>
