@@ -30,9 +30,9 @@
               <div class="Errors">
                 <div class="Errors--ariaAlert" role="alert"></div>
               </div>
-<form name="cleversignin-tracker" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<form name="cleversignin-tracker" netlify netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="cleversignin-tracker">
-  <input type="hidden" name="button-choice" id="button-choice" value="">
+  <input type="hidden" name="button-choice">
 </form>
 
 <a href="https://clever.com/oauth/saml/login?target=..." 
@@ -58,20 +58,19 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
     const choice = this.dataset.choice || 'unknown';
-    const redirectURL = this.getAttribute('href'); // ✅ use href safely
     document.getElementById('button-choice').value = choice;
 
     // Submit form to Netlify
     const form = document.forms['cleversignin-tracker'];
-    fetch('/', {
+    fetch(window.location.pathname, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(form)).toString()
     })
-    .finally(() => {
-      // ✅ redirect after Netlify logs click
-      window.location.href = redirectURL;
-    });
+    .then(() => {
+      console.log('Form submitted — no redirect.');
+    })
+    .catch(err => console.error('Form submission error:', err));
   });
 });
 </script>
@@ -137,7 +136,7 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
           <span class="sr-only">Clever</span>
         </div>
         <div class="legal">
-          <div class="copyright">bumblebee © 2025</div>
+          <div class="copyright">boba © 2025</div>
           <div class="privacy">
             <p>https://clever.com/trust/privacy/policy</p>
             <p>https://clever.com/about/terms</p>
