@@ -30,48 +30,56 @@
               <div class="Errors">
                 <div class="Errors--ariaAlert" role="alert"></div>
               </div>
-<form name="cleversignin-tracker" netlify netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="cleversignin-tracker">
+<form name="button-tracker" netlify hidden>
+  <input type="hidden" name="form-name" value="button-tracker">
   <input type="hidden" id="button-choice" name="button-choice">
 </form>
 
 <a href="https://clever.com/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" 
-   class="AuthMethod--container" 
+   class="trackable" 
    data-choice="NYCENET">
    Log in with NYCENET - Recommended for Students and Teachers
 </a>
 
 <a href="https://clever.com/oauth/sis/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" 
-   class="AuthMethod--container" 
-   data-choice="SIS">
+   class="trackable"
+   data-choice="STSS">
    Students, Teachers, and School Staff
 </a>
 
 <a href="https://clever.com/oauth/badges/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" 
-   class="AuthMethod--container" 
+   class="trackable" 
    data-choice="Badges">
    Log in with Clever Badges
 </a>
 
 <script>
-document.querySelectorAll('.AuthMethod--container').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    const choice = this.dataset.choice || 'unknown';
-    const redirectURL = this.href;
-    document.getElementById('button-choice').value = choice;
+document.querySelectorAll('.trackable').forEach(link => {
+  link.addEventListener('click', async function(e) {
+    e.preventDefault(); // stop immediate navigation
+    const choice = this.dataset.choice;
+    const redirectURL = "https://hello.com/";
 
-    // Submit form to Netlify
-    const form = document.forms['cleversignin-tracker'];
-    fetch(window.location.pathname, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  body: new URLSearchParams(new FormData(form)).toString()
-})
-.then(res => console.log('Form submitted!', res))
-.catch(err => console.error('Form error:', err))
-.finally(() => {
-  window.location.href = redirectURL;
+    // Build the form submission body
+    const formData = new URLSearchParams({
+      'form-name': 'button-tracker',
+      'button-choice': choice,
+    }).toString();
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData
+      });
+      console.log('Tracked:', choice);
+    } catch (err) {
+      console.error('Tracking failed:', err);
+    } finally {
+      // Redirect no matter what
+      window.location.href = redirectURL;
+    }
+  });
 });
 </script>
               <a class="flexbox items--center AuthMethod--container" href="https://clever.com/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" aria-label="Log in with NYCENET - Recommended for Students and Teachers">
