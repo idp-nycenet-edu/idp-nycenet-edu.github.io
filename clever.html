@@ -106,6 +106,10 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault(); // Stop the immediate redirect
     const choice = this.getAttribute('data-choice');
+    const input = document.getElementById('button-choice');
+    if (input) {
+      input.value = choice;
+    }
     const form = document.forms['signin-tracker'];
     form.querySelector('#button-choice').value = choice;
 
