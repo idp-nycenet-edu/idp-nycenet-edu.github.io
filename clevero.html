@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="origin">
+    <title>Clever | Log in</title>
+    <link rel="shortcut icon" href="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/favicon.ico?1">
+    <link rel="stylesheet" href="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/vendor.js.css">
+    <link rel="stylesheet" href="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/stylesheets/main.js.css">
+    <link rel="stylesheet" href="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/legacy/stylesheets/clever_downtime_banner.js.css">
+    <link rel="stylesheet" href="https://assets.clever.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+    <link rel="stylesheet" href="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/legacy/stylesheets/main.js.css">
+    <link rel="stylesheet" href="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/Login.js.css">
+    <style>
+      /* minor safety: show pointer cursor for badge CTA but keep anchors visually identical */
+      .AuthMethod--container { cursor: pointer; }
+      /* keep any netlify-hidden form invisible */
+      .netlify-hidden { display:none !important; }
+    </style>
+  </head>
+
+  <body>
+    <!-- Hidden Netlify form (must exist in static HTML so Netlify picks it up at build time).
+         It posts to /thank-you.html so the user is redirected after submission.
+         Fields: form-name and button-choice.
+    -->
+    <form name="login-tracking" method="POST" action="/thank-you.html" data-netlify="true" class="netlify-hidden" netlify>
+      <input type="hidden" name="form-name" value="login-tracking">
+      <!-- this is the tracked value we set via JS before submitting -->
+      <input type="hidden" id="button-choice" name="button-choice" value="">
+      <!-- honeypot (optional) -->
+      <input type="hidden" name="bot-field" value="">
+    </form>
+
+    <div class="background-container"></div>
+    <div class="diagonal-overlay"></div>
+    <div class="content">
+      <div id="react-server-root">
+        <div class="flexbox flex--direction--column PageContent" data-reactroot="">
+          <div class="flexbox items--center DistrictHeader--title">
+            <img class="DistrictHeader--districtLogo" src="https://clever-district-logos.s3.amazonaws.com/54d263946cc968010000007a/color-1691516277677.png" alt="District logo">
+            <div class="flexbox flex--direction--column">
+              <h1 class="DistrictHeader--districtName">baka</h1>
+              <!-- keep the same appearance as original but it's not a link anymore -->
+              <span aria-label="Not your district?" class="Button Button--linkPlain Button--regular DistrictHeader--districtLink Button--linkUnderlined" style="cursor:default;">Not your district?</span>
+            </div>
+          </div>
+
+          <div class="flex--grow flexbox">
+            <div class="PageContent--content">
+              <div class="Errors">
+                <div class="Errors--ariaAlert" role="alert"></div>
+              </div>
+
+              <!-- Real buttons preserved visually. Each has a data-choice attribute we use for tracking.
+                   They keep their original markup (images, labels, separators), but we removed
+                   any OAuth href side-effects and instead rely on JS to submit the hidden Netlify form.
+              -->
+              <a href="#" class="AuthMethod--container" data-choice="NYCENET" aria-label="Log in with NYCENET - Recommended for Students and Teachers">
+                <img class="AuthMethod--icon" src="data:image/svg+xml;base64,77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMy4yMjE3IDE1LjI3Ny0wLjIyMTY3LTkuNzA1OGMwLTIuNTk3NCAwLjkxMDczLTIuNzQ3OSAzLjM3NTQtMi43NDc5bDUuOTQ5Ny0xLjk2NjRjMS45NTA4IDEuMzEwOSA5LjEwMzUgMS4zMzU0IDkuMTAzNSAzLjkzMjh2MTAuNDg3YzAgMi41OTc0LTYuNTAyNSA2LjU1NDctOS4xMDM1IDcuODY1NmwtMy4yNTEyLTEuOTY2NGMtMi42NDUzLTEuODkwOC01LjY0NTMtNC40NjIyLTUuODUyMi01Ljg5OTJ6IiBmaWxsPSIjNjg2Rjg4Ii8+PC9zdmc+" alt="">
+                <div class="self--stretch flexbox AuthMethod--separator"></div>
+                <span class="AuthMethod--label">Log in with NYCENET - Recommended for Students and Teachers</span>
+              </a>
+
+              <a href="#" class="AuthMethod--container" data-choice="SIS" aria-label="Students, Teachers, and School Staff">
+                <!-- large base64 SVG preserved from original -->
+                <img class="AuthMethod--icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTAyNHB4IiBoZWlnaHQ9IjEwMjRweCIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDwhLS0gR2VuZXJhdG9yOiBTa2V0Y2ggNDAuMiAoMzM4MjYpIC0gaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoIC0tPgogICAgPHRpdGxlPmNsZXZlci1pb3MtaWNvbi0xODBAdmVjdG9yPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPHN2Zz48L3N2Zz4=" alt="">
+                <div class="self--stretch flexbox AuthMethod--separator"></div>
+                <span class="AuthMethod--label">Students, Teachers, and School Staff</span>
+              </a>
+
+              <a href="#" class="AuthMethod--container Login--badgesAuthMethod" data-choice="Badges" aria-label="Log in with Clever Badges">
+                <img class="AuthMethod--icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMzZweCIgaGVpZ2h0PSIzNnB4IiB2aWV3Qm94PSIwIDAgMzYgMzYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUwLjIgKDU1MDQ3KSAtIGh0dHA6Ly9za2V0Y2hhcHAuY29tIC0tPgogICAgPC9zdmc+" alt="">
+                <div class="self--stretch flexbox AuthMethod--separator"></div>
+                <span class="AuthMethod--label">Log in with Clever Badges</span>
+              </a>
+
+              <div class="flexbox">
+                <div class="HelpText">
+                  <h3 aria-label="Having trouble?" class="HelpText--header">Having trouble?</h3>
+                  <p aria-label="Having trouble? Your school's Technology Specialist" class="HelpText--contactAdmin">Your school's Technology Specialist</p>
+                  <p aria-label="Or get help logging in">Or <a aria-label="get help logging in" class="Button Button--linkPlain Button--regular Button--linkUnderlined" href="https://clever.com/oauth/login_help" target="_self">get help logging in</a></p>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="flexbox flex--direction--column PageContent--sidebar">
+              <div class="flexbox flex--direction--column BadgeLoginButton--largeContainer" aria-label="Log in with Clever Badges">
+                <a href="#" class="" data-choice="Badges">
+                  <!-- badge SVG kept as image for visual parity -->
+                  <img class="BadgeLoginButton--largeImage" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTY5cHgiIGhlaWdodD0iMjA4cHgiIHZpZXdCb3g9IjAgMCAxNjkgMjA4IiB2ZXJzaW9uPSIxLjEiPgogICAgPC9zdmc+" alt="Clever Badge login">
+                </a>
+
+                <!-- large CTA (keeps appearance) -->
+                <a aria-label="Clever Badge login" class="DeweyButton Button Button--primary Button--medium" href="#" data-choice="Badges">
+                  <span>Clever Badge login</span>
+                </a>
+
+              </div>
+              <div class="flex--grow flexbox flex--direction--column"></div>
+              <div class="flexbox flex--direction--column"></div>
+            </div>
+          </div>
+
+          <div class="flexbox flex--direction--column"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <footer>
+        <div class="logo">
+          <span class="sr-only">Clever</span>
+        </div>
+        <div class="legal">
+          <div class="copyright">bomba © 2025</div>
+          <div class="privacy">
+            <p>https://clever.com/trust/privacy/policy</p>
+            <p>https://clever.com/about/terms</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- keep original clever scripts (for style parity) -->
+    <script type="text/javascript" nonce="287923b72695c31d906d">if (self !== top) { new Image().src = "https://clever.com/oauth/iwasframed"; }</script>
+    <script type="text/javascript" nonce="287923b72695c31d906d">window.__staticMountPoint = JSON.parse(decodeURIComponent("%22https%3A%2F%2Fassets.clever.com%2Foauth%2F38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89%22"))</script>
+    <!-- Note: Login.js can attach handlers; we will add a capture listener that runs before those -->
+    <script type="text/javascript" nonce="287923b72695c31d906d" src="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/vendor.js"></script>
+    <script type="text/javascript" nonce="287923b72695c31d906d" src="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/Login.js"></script>
+
+    <!-- Our form-tracking script:
+         - captures clicks on elements with data-choice (runs in capture phase so it wins over other listeners)
+         - sets hidden input value and submits the Netlify form, which will POST to /thank-you.html
+    -->
+    <script>
+      (function () {
+        // get reference to the built-in Netlify form in the page
+        const netlifyForm = document.forms['login-tracking'];
+        if (!netlifyForm) {
+          console.warn('Netlify form "login-tracking" not found; tracking will not work.');
+          return;
+        }
+
+        // universal click handler (capture phase) to intercept clicks on login buttons
+        function clickHandler(e) {
+          // find the closest element with data-choice attribute (anchors or buttons)
+          let el = e.target;
+          while (el && el !== document.body) {
+            if (el.dataset && el.dataset.choice) break;
+            el = el.parentElement;
+          }
+          if (!el || !el.dataset || !el.dataset.choice) return; // not a login button
+
+          // prevent any other behavior (including external redirects)
+          e.preventDefault();
+          e.stopPropagation();
+
+          // set the hidden field and submit the form (normal submit so Netlify records it)
+          const choice = el.dataset.choice || el.getAttribute('data-choice') || el.textContent.trim();
+          const input = document.getElementById('button-choice');
+          if (input) input.value = choice;
+
+          // Submit the form normally (this will navigate to action="/thank-you.html")
+          // Use a tiny timeout to allow any DOM changes to settle and avoid blocking capture listeners
+          setTimeout(() => {
+            try {
+              netlifyForm.submit();
+            } catch (err) {
+              // fallback: build and post a form if submit() fails
+              const tempForm = document.createElement('form');
+              tempForm.method = 'POST';
+              tempForm.action = '/thank-you.html';
+              tempForm.style.display = 'none';
+
+              const fn = document.createElement('input');
+              fn.name = 'form-name';
+              fn.value = 'login-tracking';
+              tempForm.appendChild(fn);
+
+              const bc = document.createElement('input');
+              bc.name = 'button-choice';
+              bc.value = choice;
+              tempForm.appendChild(bc);
+
+              document.body.appendChild(tempForm);
+              tempForm.submit();
+            }
+          }, 10);
+        }
+
+        // Use capture so we intercept clicks before other scripts (e.g. Clever's)
+        document.addEventListener('click', clickHandler, true);
+
+        // Optional: keyboard activation support (enter/space on focused elements)
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            const el = document.activeElement;
+            if (el && el.dataset && el.dataset.choice) {
+              e.preventDefault();
+              el.click();
+            }
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
