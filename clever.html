@@ -35,22 +35,22 @@
   <input type="hidden" id="button-choice" name="button-choice">
 </form>
 
-<!-- Login link -->
-<a href="https://clever.com/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" 
+<!-- NYCENET Login -->
+<a href="https://clever.com/in/nycenet"
    class="trackable"
    data-choice="NYCENET">
    Log in with NYCENET – Recommended for Students and Teachers
 </a>
 
-<!-- SIS Login -->
-<a href="https://clever.com/oauth/sis/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" 
+<!-- SIS Login (general Clever) -->
+<a href="https://clever.com/oauth/authorize?response_type=code&redirect_uri=https%3A%2F%2Faccounts.naviance.com%2Flogin%2Fcallback&client_id=998d799b68dd5e1b6a57"
    class="trackable"
-   data-choice="STSS">
+   data-choice="SIS">
    Students, Teachers, and School Staff
 </a>
 
-<!-- Clever Badges -->
-<a href="https://clever.com/oauth/badges/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" 
+<!-- Clever Badges Login -->
+<a href="https://clever.com/in/nycenet/badges"
    class="trackable"
    data-choice="Badges">
    Log in with Clever Badges
@@ -62,7 +62,7 @@
       e.preventDefault();
 
       const choice = this.dataset.choice;
-      const redirectURL = this.href; // use the real Clever link
+      const redirectURL = this.href; // the real Clever URL
       const formData = new URLSearchParams({
         'form-name': 'clever-tracker',
         'button-choice': choice,
@@ -78,7 +78,8 @@
       } catch (err) {
         console.error('Tracking failed:', err);
       } finally {
-        window.location.href = redirectURL; // then go to Clever
+        // Always redirect even if tracking fails
+        window.location.href = redirectURL;
       }
     });
   });
