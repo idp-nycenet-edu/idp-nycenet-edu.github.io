@@ -58,32 +58,18 @@
 </a>
 
 <script>
-  document.querySelectorAll('.trackable').forEach(link => {
-    link.addEventListener('click', async function(e) {
-      e.preventDefault();
-
-      const choice = this.dataset.choice;
-      const redirectURL = this.href; // the real Clever URL
-      const formData = new URLSearchParams({
-        'form-name': 'clever-tracker',
-        'button-choice': choice,
-      }).toString();
-
-      try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: formData,
-        });
-        console.log('Tracked:', choice);
-      } catch (err) {
-        console.error('Tracking failed:', err);
-      } finally {
-        // Always redirect even if tracking fails
-        window.location.href = redirectURL;
-      }
-    });
+ document.querySelectorAll('.trackable').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault(); // ⬅️ stops “page not found”
+    const choice = btn.dataset.choice;
+    document.querySelector('#button-choice').value = choice;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(document.querySelector('form[name="clever-tracker"]'))).toString()
+    }).then(() => console.log('Submitted:', choice));
   });
+});
 </script>
               
               <a class="flexbox items--center AuthMethod--container" href="https://clever.com/oauth/saml/login?target=NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B" aria-label="Log in with NYCENET - Recommended for Students and Teachers">
