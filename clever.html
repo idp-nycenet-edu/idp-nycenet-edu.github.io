@@ -44,9 +44,9 @@
     e.preventDefault(); // ⬅️ stops “page not found”
     const choice = btn.dataset.choice;
     document.querySelector('#button-choice').value = choice;
-    fetch(window.location.pathname, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  fetch("/", {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
   body: new URLSearchParams(new FormData(document.querySelector('form[name="clever-tracker"]'))).toString()
 })
     .then(() => {
